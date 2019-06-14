@@ -9,6 +9,154 @@
 
 ---
 
+![https://img.shields.io/badge/Open%20Source-ByEricWang-orange.svg](https://ivu1314.club)
+![https://img.shields.io/npm/dy/fullvue-cli.svg?style=plastic]()
+![https://img.shields.io/npm/l/fullvue-cli.svg]()
+![https://img.shields.io/github/repo-size/bigbigDreamer/fullvue-cli.svg]()
+![https://img.shields.io/npm/v/fullvue-cli.svg]()
+
+## `fullvue-cli`介绍
+
+&emsp;&emsp;这是一个基于Vue-cli3.0 所构建项目目录的脚手架，用于生成一个依赖更多，
+文件目录更全的大中型项目所需，并没有什么技术创新点，单纯为了方便开发。如果你觉得你有更好得提议，那么一起来吧~
+
+## 使用说明
+
+```bash
+
+# Install the fullvue-cli
+$ npm i -g fullvue-cli
+
+# Create your project
+$ fullvue create project
+
+```
+
+## 脚手架搭建教学
+
+### 依赖说明
+
+- commander(node命令行工具)
+- download-git-repo(命令行克隆git仓库)
+- inquirer(命令行答询)
+- handlebars(修改已有的package.json文件)
+- ora(显示loading状态，类似于一个加载动画)
+- chalk(一个很有趣的工具，用于在命令行改变字体颜色)
+- log-symbols(可以在命令行提示文字中显示符号，例如：成功就是绿色√，错误就是红色×)
+- fs(Node原生文件操作API，不需要`npm i`)
+
+### 步骤详解
+
+>第一步 `npm init project`
+
+>第二步 在package.json中加入
+```json5
+{
+ "bin": {
+    "fullvue": "./index.js"
+  }
+  }
+```
+>第三步 编写index.js
+
+**需要注意的就是：在编写命令行相关的js文件时，需要在头部加上`#!/usr/bin/env node`**
+**在使用`download-git-repo`不要被干扰了，这里的url地址格式是：`https://github.com:owner/仓库名`，否则报错`128`**
+**`log-symbols`加载成功后，那个`√`可能显示不完全，我也不知道是不是`BUG`**
+
+```javascript
+#!/usr/bin/env node
+//命令行工具
+const commander  = require('commander');
+//自动clone github 仓库
+const download = require('download-git-repo');
+//命令行答询
+const inquirer = require('inquirer');
+//修改package.json
+const handlebars = require('handlebars');
+//显示加载状态
+const ora = require('ora');
+//控制命令行输出的颜色
+const chalk = require('chalk');
+//控制命令行符号
+const logSym = require('log-symbols');
+//文件系统
+const fs = require('fs');
+
+
+//cli源模板
+const template = {
+    url: 'https://github.com/bigbigDreamer/fullvue',
+    //注意了，这里不要被干扰了，这里的url地址格式是：https://github.com:owner/仓库名
+    downloadUrl: 'https://github.com:bigbigDreamer/fullvue',
+    description: 'fullvue scaffolding test template'
+};
+
+const TipList = [
+    //项目名
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Please enter a project name:',
+        default: projectName
+    },
+    //项目描述
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Please enter a project description:',
+        default: `This is a project`
+    },
+    //作者名
+    {
+        type: 'input',
+        name: 'author',
+        message: 'Please enter the author name:',
+        default: ''
+    },
+    //项目协议
+    {
+        type: 'input',
+        name: 'license',
+        message: 'Please enter the license:',
+        default: 'MIT'
+    },
+];
+
+//通过执行  fullvue -v/-V/--version 获取版本号
+commander.version('1.0.0');
+
+
+//设计命令行参数
+commander
+    .command('create <project>')
+    .description('Initialize project template~~~')
+    .action((projectName) => {
+        const spinner = ora('Downloading template...').start();
+        const {downloadUrl} = template;
+        //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
+        download(downloadUrl, projectName,  err => {
+            if (err) {
+                spinner.fail('Project template download failed!');
+            } else {
+                // console.log('下载模板成功');
+                spinner.succeed('Project template downloaded successfully!');
+                //命令行答询
+                inquirer.prompt(TipList).then(answers => {
+                    //根据命令行答询结果修改package.json文件
+                    let content = fs.readFileSync(`${projectName}/package.json`, 'utf8');
+                    let packageResult = handlebars.compile(content)(answers);
+                    fs.writeFileSync(`${projectName}/package.json`, packageResult);
+                    //用chalk和log-symbols改变命令行输出样式
+                    console.log(logSym.success, chalk.green('项目文件准备成功~~~'));
+                });
+            }
+        });
+    });
+
+//解析命令
+commander.parse(process.argv);
+
+```
 
 ## License MIT
 

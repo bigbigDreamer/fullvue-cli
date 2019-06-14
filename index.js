@@ -3,7 +3,7 @@
 const commander  = require('commander');
 //自动clone github 仓库
 const download = require('download-git-repo');
-//命令行答循
+//命令行答询
 const inquirer = require('inquirer');
 //修改package.json
 const handlebars = require('handlebars');

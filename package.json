@@ -1,6 +1,6 @@
 {
   "name": "fullvue-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cli for full Vue",
   "main": "index.js",
   "scripts": {
