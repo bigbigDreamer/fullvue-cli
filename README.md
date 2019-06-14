@@ -59,9 +59,9 @@ $ fullvue create project
 ```
 >第三步 编写index.js
 
-**需要注意的就是：在编写命令行相关的js文件时，需要在头部加上`#!/usr/bin/env node`**
-**在使用`download-git-repo`不要被干扰了，这里的url地址格式是：`https://github.com:owner/仓库名`，否则报错`128`**
-**`log-symbols`加载成功后，那个`√`可能显示不完全，我也不知道是不是`BUG`**
+1. **需要注意的就是：在编写命令行相关的js文件时，需要在头部加上`#!/usr/bin/env node`**
+2. **在使用`download-git-repo`不要被干扰了，这里的url地址格式是：`https://github.com:owner/仓库名`，否则报错`128`**
+3. **`log-symbols`加载成功后，那个`√`可能显示不完全，我也不知道是不是`BUG`**
 
 ```javascript
 #!/usr/bin/env node
