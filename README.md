@@ -9,11 +9,11 @@
 
 ---
 
-![https://img.shields.io/badge/Open%20Source-ByEricWang-orange.svg](https://ivu1314.club)
-![https://img.shields.io/npm/dy/fullvue-cli.svg?style=plastic]()
-![https://img.shields.io/npm/l/fullvue-cli.svg]()
-![https://img.shields.io/github/repo-size/bigbigDreamer/fullvue-cli.svg]()
-![https://img.shields.io/npm/v/fullvue-cli.svg]()
+![](https://img.shields.io/badge/Open%20Source-ByEricWang-orange.svg)
+![](https://img.shields.io/npm/dy/fullvue-cli.svg?style=plastic)
+![](https://img.shields.io/npm/l/fullvue-cli.svg)
+![](https://img.shields.io/github/repo-size/bigbigDreamer/fullvue-cli.svg)
+![](https://img.shields.io/npm/v/fullvue-cli.svg)
 
 ## `fullvue-cli`介绍
 
