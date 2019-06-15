@@ -158,6 +158,17 @@ commander.parse(process.argv);
 
 ```
 
+## fullvue-cli操作演示
+
+![alt](https://github.com/bigbigDreamer/GraphBed/blob/master/fullvue/console.png?raw=true)
+
+![alt](https://github.com/bigbigDreamer/GraphBed/blob/master/fullvue/clone.png?raw=true)
+
+
+## fullvue模板源文件目录
+
+![alt](https://github.com/bigbigDreamer/GraphBed/blob/master/fullvue/dir.png?raw=true)
+
 ## License MIT
 
 

@@ -31,7 +31,7 @@ const TipList = [
         type: 'input',
         name: 'name',
         message: 'Please enter a project name:',
-        default: projectName
+        default: 'vue'
     },
     //项目描述
     {
