@@ -66,6 +66,10 @@ commander
     .description('Initialize project template~~~')
     .action((projectName) => {
         const spinner = ora('Downloading template...').start();
+        setTimeout(() => {
+            spinner.color = 'yellow';
+            spinner.text = 'please wait patiently for a while';
+        }, 1000);
         const {downloadUrl} = template;
         //第一个参数是github仓库地址，第二个参数是创建的项目目录名，第三个参数是clone
         download(downloadUrl, projectName,  err => {
@@ -81,7 +85,8 @@ commander
                     let packageResult = handlebars.compile(content)(answers);
                     fs.writeFileSync(`${projectName}/package.json`, packageResult);
                     //用chalk和log-symbols改变命令行输出样式
-                    console.log(logSym.success, chalk.green('项目文件准备成功~~~'));
+                    console.log(logSym.success, chalk.green('project document preparation is successful~~~'));
+                    console.log(logSym.info, chalk.greenBright('I hope you have a good time. My personal email address is: vuejs@vip.qq.com. If you have any questions, please contact me directly!'));
                 });
             }
         });
