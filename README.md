@@ -30,6 +30,12 @@ $ npm i -g fullvue-cli
 # Create your project
 $ fullvue create project
 
+# CD project
+$ npm i
+
+# Run Server
+$ npm run serve
+
 ```
 
 ## 脚手架搭建教学
