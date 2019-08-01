@@ -175,7 +175,9 @@ commander.parse(process.argv);
 
 ![alt](https://github.com/bigbigDreamer/GraphBed/blob/master/fullvue/dir.png?raw=true)
 
-## License MIT
+## License 
+
+[MIT](https://github.com/bigbigDreamer/fullvue-cli/blob/master/LICENSE ).Copyright (c) 2019 Eric Wang
 
 
 
