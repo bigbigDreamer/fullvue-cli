@@ -1,5 +1,7 @@
 # fullvue-cli
 
+![](https://github.com/bigbigDreamer/GraphBed/blob/master/fullvue/logos.png?raw=true)
+
 ---
 ###### Author:Eric Wang
 
